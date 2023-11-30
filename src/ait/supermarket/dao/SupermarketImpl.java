@@ -43,7 +43,7 @@ public class SupermarketImpl implements Supermarket {
         }
         return null;*/
         return products.stream()
-                .filter(p->p.getBarCode()==0)
+                .filter(p->p.getBarCode()==barCode)
                 .findFirst()
                 .orElse(null);
     }

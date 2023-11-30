@@ -1,6 +1,7 @@
 package ait.supermarket;
 
 import java.time.LocalDate;
+import java.util.stream.StreamSupport;
 
 import ait.supermarket.dao.Supermarket;
 import ait.supermarket.dao.SupermarketImpl;
@@ -24,12 +25,20 @@ public class SupermarketAppl {
         myMarket.forEach(System.out::println);
 
         System.out.println("Products with expired date:");
-       Iterable<Product> res = myMarket.findProductWithExpDate();
+        Iterable<Product> res = myMarket.findProductWithExpDate();
        /* for (Product product : res) {
             System.out.println(product);
         }*/
         System.out.println();
-         res.forEach(System.out::println);
+        //  res.forEach(System.out::println);
+
+        //или так, метод применяют для итерируемых множеств:
+        /*
+         * */
+        StreamSupport.stream(res.spliterator(), false)
+                .forEach(System.out::println);
+        System.out.println();
+
     }
 
 }
